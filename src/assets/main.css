@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: #f5f5f5;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+/* 卡片拖拽动画 */
+.sortable-drag {
+  opacity: 0.5;
+  background: #e6f7ff;
+}
+
+.sortable-ghost {
+  opacity: 0.3;
+  background: #ccc;
+}
