@@ -13,7 +13,9 @@ export const mockItinerary = {
           lng: 100.145,
           duration: 2,
           timeSlot: 'morning',
-          tip: '早上人少，适合拍照'
+          tip: '早上人少，适合拍照',
+          price: 75,
+          rating: 4.6
         },
         {
           id: 'loc_2',
@@ -23,7 +25,9 @@ export const mockItinerary = {
           lng: 100.161,
           duration: 3,
           timeSlot: 'afternoon',
-          tip: '可以尝尝烤乳扇'
+          tip: '可以尝尝烤乳扇',
+          price: 0,
+          rating: 4.5
         },
         {
           id: 'loc_3',
@@ -33,7 +37,9 @@ export const mockItinerary = {
           lng: 100.163,
           duration: 2,
           timeSlot: 'evening',
-          tip: '有很多民谣酒吧'
+          tip: '有很多民谣酒吧',
+          price: 0,
+          rating: 4.3
         }
       ]
     },
@@ -49,7 +55,9 @@ export const mockItinerary = {
           lng: 100.237,
           duration: 4,
           timeSlot: 'morning',
-          tip: '租自行车骑行最佳'
+          tip: '租自行车骑行最佳',
+          price: 0,
+          rating: 4.8
         },
         {
           id: 'loc_5',
@@ -59,7 +67,9 @@ export const mockItinerary = {
           lng: 100.117,
           duration: 3,
           timeSlot: 'afternoon',
-          tip: '喜洲粑粑必吃'
+          tip: '喜洲粑粑必吃',
+          price: 0,
+          rating: 4.4
         }
       ]
     }

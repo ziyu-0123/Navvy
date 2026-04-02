@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <header class="app-header">
-      <h1>✈️ 智能行程规划</h1>
+      <h1>智能行程规划</h1>
       <p>AI帮你规划最优路线</p>
     </header>
     
@@ -19,7 +19,7 @@
       </div>
       
       <div v-if="store.loading" class="loading-state">
-        <el-skeleton :rows="5" animated />
+        <div class="loading-spinner"></div>
         <div class="loading-text">正在生成行程，请稍候...</div>
       </div>
     </div>
@@ -46,62 +46,127 @@ const onItineraryGenerated = (itinerary) => {
 <style scoped>
 .home {
   min-height: 100vh;
-  background: #f5f5f5;
 }
 
 .app-header {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  padding: 48px 24px;
+  padding: 20px 24px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.app-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .app-header h1 {
-  font-size: 32px;
+  font-size: 36px;  /* 从 42px 改小 */
   margin-bottom: 8px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  position: relative;
+  z-index: 1;
+}
+
+.app-header p {
+  font-size: 14px;  /* 从 16px 改小 */
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
 }
 
 .content {
   max-width: 1200px;
-  margin: -24px auto 0;
-  padding: 0 20px 40px;
+  margin: 16px auto 0;
+  padding: 0 24px 60px;
+  position: relative;
+  z-index: 2;
 }
 
 .form-section {
-  margin-bottom: 32px;
+  margin-bottom: 16px;
+  animation: slideInRight 0.5s ease;
 }
 
 .result-section {
-  animation: fadeIn 0.5s ease;
+  animation: fadeInUp 0.6s ease;
 }
 
 .empty-state,
 .loading-state {
   background: white;
-  border-radius: 8px;
-  padding: 60px;
+  border-radius: 20px;
+  padding: 80px 40px;
   text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
 .loading-text {
-  margin-top: 20px;
   color: #666;
+  font-size: 14px;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 @media (max-width: 768px) {
+  .app-header {
+    padding: 16px 20px;
+  }
+  
+  .app-header h1 {
+    font-size: 24px;
+    margin-bottom: 4px;
+  }
+  
+  .app-header p {
+    font-size: 12px;
+  }
+  
   .content {
-    padding: 0 12px 20px;
+    padding: 0 16px 40px;
+    margin-top: 16px;  /* 关键修改：不重叠 */
+  }
+  
+  .empty-state,
+  .loading-state {
+    padding: 40px 20px;
   }
 }
 </style>

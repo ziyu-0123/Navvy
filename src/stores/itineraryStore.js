@@ -39,6 +39,38 @@ export const useItineraryStore = defineStore('itinerary', {
 
     setCurrentDay(index) {
       this.currentDayIndex = index
+    },
+
+    // 删除地点
+    deleteLocation(dayIndex, locationId) {
+      const day = this.itinerary.days[dayIndex]
+      const index = day.locations.findIndex(l => l.id === locationId)
+      if (index !== -1) {
+        day.locations.splice(index, 1)
+      }
+    },
+
+    // 更新地点名称
+    updateLocationName(dayIndex, locationId, newName) {
+      const day = this.itinerary.days[dayIndex]
+      const location = day.locations.find(l => l.id === locationId)
+      if (location) {
+        location.name = newName
+      }
+    },
+
+    // 添加地点
+    addLocation(dayIndex, newLocation) {
+      this.itinerary.days[dayIndex].locations.push(newLocation)
+    },
+
+    // 更新地点完整信息（后续扩展用）
+    updateLocation(dayIndex, locationId, updates) {
+      const day = this.itinerary.days[dayIndex]
+      const location = day.locations.find(l => l.id === locationId)
+      if (location) {
+        Object.assign(location, updates)
+      }
     }
   }
 })
